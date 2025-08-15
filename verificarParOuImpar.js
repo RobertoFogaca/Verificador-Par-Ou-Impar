@@ -6,20 +6,25 @@ const rl = readline.createInterface({
 });
 
 function novaAnalize(){
-    rl.question(`Quer analizar outro numero? (Sim/Não) `, (nova) => {
-        const novaAnalize = nova;
-        if(novaAnalize.toLowerCase() === 'sim'){
+    rl.question(`Quer analisar outro numero? (Sim/Não) `, (nova) => {
+        const analize = nova;
+        if(analize.toLowerCase() === 'sim'){
             console.log('Otimo! vamos para outro teste então!')
             return analizarParOuImpar()
-        }else{
+        }else if(analize.toLowerCase() === 'não' || analize.toLowerCase() === 'nao'){
             console.log('Ok, entendo, muito obrigado por testar esse codigo, até mais!')
             rl.close()
+        }
+        
+        else{
+            console.log('Putz cara, infelizmente não entendi sua resposta, por favor, responda com Sim ou Não.');
+            return novaAnalize()
         }
     })
 }
 
 function analizarParOuImpar(){
-    rl.question('Digite seu um numero: ', (num) => {
+    rl.question('Digite algum numero por favor: ', (num) => {
         const numero = parseInt(num);
         if(isNaN(numero)){
             console.log('Por favor, insira um numero válido.')
